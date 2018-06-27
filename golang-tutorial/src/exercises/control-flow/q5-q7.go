@@ -33,10 +33,7 @@ func multiplesOf3and5() {
 }
 
 func half(x int) (int, bool) {
-  if(x % 2 == 0) {
-    return x, true
-  }
-  return x, false
+  return x, x % 2 == 0
 }
 
 func main() {
