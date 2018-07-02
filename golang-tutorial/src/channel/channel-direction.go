@@ -7,13 +7,12 @@ import (
 func main() {
   c := incrementor() // returning a channel
   cSum := puller(c) // passing a channel
-  for n := range cSum { //inbound channel
+  for n := range cSum {
     fmt.Println(n)
   }
 }
 
-//outbound channel
-func incrementor() chan int {
+func incrementor() <-chan int {
   out := make(chan int)
   go func() {
     for i := 0; i < 10; i++ {
@@ -24,7 +23,7 @@ func incrementor() chan int {
   return out
 }
 
-func puller(c chan int) chan int {
+func puller(c <-chan int) <-chan int {
   out := make(chan int)
   go func() {
     var sum int
