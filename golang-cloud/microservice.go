@@ -4,13 +4,14 @@ import (
   "os"
   "fmt"
   "net/http"
-  
+  "github.com/tqtruong95/Golang/golang-cloud/api"
 )
 
 func main() {
-  //http.HandleFunc("/", index)
-  //http.HandleFunc("api/echo", echo)
-  http.HandleFunc("api/books", api.BooksHandleFunc)
+  http.HandleFunc("/", index)
+  http.HandleFunc("api/echo", echo)
+  http.HandleFunc("/api/books", api.BooksHandleFunc)
+  http.HandleFunc("/api/books/", api.BooksHandleFunc)
   http.ListenAndServe(port(), nil)
 }
 
